@@ -48,4 +48,9 @@ class UserController extends Controller
         $this->repository->update($request,$id);
         return response()->json(['message'=>'OK'])->setStatusCode(202,'Accepted');
     }
+    public function destroy($id)
+    {
+        $this->repository->delete($id);
+        return response()->json(['message'=>'OK']);
+    }
 }
