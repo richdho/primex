@@ -11,5 +11,8 @@ class Role extends Model
 
     protected $dates = ['deleted_at'];
 
-
+    public function role_users()
+    {
+    	return $this->hasMany('App\User');
+    }
 }

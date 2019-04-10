@@ -31,4 +31,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role');
+    }
 }
