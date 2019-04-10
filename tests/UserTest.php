@@ -5,7 +5,7 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 class UserTest extends TestCase
 {
 
-    use DatabaseTransactions;
+    //use DatabaseTransactions;
     /**
      * 
      *
@@ -62,6 +62,21 @@ class UserTest extends TestCase
         //var_dump($response);
 
         $this->assertEquals(201, $response->status());
+    }
+
+    public function testUpdateOneUser()
+    {
+        $random = substr(md5(mt_rand()), 0, 7);
+        $user = \App\User::first();
+        $response = $this->call('PUT', '/users/'.$user->id,[
+            'name' => 'Test'.$random,
+            'roles' => [2,3],
+            'password' => app('hash')->make($random),
+        ]);
+
+        //var_dump($response);
+
+        $this->assertEquals(202, $response->status());
     }
 
 }
