@@ -32,8 +32,20 @@ class UserController extends Controller
             'password' => 'required|string|min:6',
             'roles'=> 'required|array'
         ]);
-        
+
         $this->repository->create($request);
         return response()->json(['message'=>'OK'])->setStatusCode(201,'created');
+    }
+
+    public function update(Request $request,$id)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'password' => 'required|string|min:6',
+            'roles'=> 'required|array'
+        ]);
+        
+        $this->repository->update($request,$id);
+        return response()->json(['message'=>'OK'])->setStatusCode(202,'Accepted');
     }
 }
