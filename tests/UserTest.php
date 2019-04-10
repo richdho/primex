@@ -1,8 +1,11 @@
 <?php
 
+use Laravel\Lumen\Testing\DatabaseTransactions;
+
 class UserTest extends TestCase
 {
 
+    use DatabaseTransactions;
     /**
      * 
      *
@@ -44,6 +47,18 @@ class UserTest extends TestCase
                         'deleted_at'
                 ],
              ]);
+    }
+
+    public function testCreateOneUser()
+    {
+        $response = $this->call('POST', '/users',[
+            'name' => 'Test1',
+            'email' => 'test1@gmail.com',
+            'roles' => [1,3],
+            'password' => app('hash')->make('test123'),
+        ]);
+
+        $this->assertEquals(201, $response->status());
     }
 
 }
