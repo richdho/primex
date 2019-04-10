@@ -15,5 +15,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
+        'password' => app('hash')->make('test123'),
+    ];
+});
+
+$factory->define(\App\Role::class, function (Faker\Generator $faker) use ($factory) {
+    return [
     ];
 });
