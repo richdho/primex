@@ -53,4 +53,16 @@ class UserController extends Controller
         $this->repository->delete($id);
         return response()->json(['message'=>'OK']);
     }
+
+    public function deletes(Request $request)
+    {
+        $this->validate($request, [
+            'ids'=> 'required|array'
+        ]);
+
+        foreach ($request->input('ids') as $id) {
+            $this->repository->delete($id);
+        }
+        return response()->json(['message'=>'OK']);
+    }
 }
