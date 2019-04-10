@@ -9,4 +9,8 @@ class UserRepository implements UserRepositoryInterface
 		return \App\User::with(['roles'])->get();
 	}
 
+	public function getById($id)
+	{
+		return \App\User::with(['roles'])->findOrFail($id);
+	}
 }

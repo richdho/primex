@@ -12,3 +12,4 @@
 */
 
 $router->get('/users','UserController@index');
+$router->get('/users/{id}','UserController@show');

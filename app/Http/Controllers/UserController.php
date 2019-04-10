@@ -17,4 +17,9 @@ class UserController extends Controller
     {
     	return response()->json(['users'=>$this->repository->getAll()]);
     }
+
+    public function show($id)
+    {
+        return response()->json(['user'=>$this->repository->getById($id)]);
+    }
 }
