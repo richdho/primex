@@ -94,4 +94,21 @@ class UserTest extends TestCase
              ]);
     }
 
+    /**
+     *
+     *
+     * @return void
+     */
+    public function testDeleteMultipleUsers()
+    {
+        $users = \App\User::orderby('created_at', 'desc')->take(2)->get();
+        $this->json('POST', '/users/batch-delete',[
+                $users[0]->id,
+                $users[1]->id
+             ])
+             ->seeJson([
+                'message' => 'OK'
+             ]);
+    }
+
 }
