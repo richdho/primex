@@ -19,4 +19,11 @@ class UserRepository implements UserRepositoryInterface
 		$newUser = \App\User::create($user->except(['roles']));
 		$newUser->roles()->attach($user->input('roles'));
 	}
+	public function update($user)
+	{
+	}
+	public function delete($id)
+	{
+		
+	}
 }
