@@ -13,4 +13,10 @@ class UserRepository implements UserRepositoryInterface
 	{
 		return \App\User::with(['roles'])->findOrFail($id);
 	}
+
+	public function create($user)
+	{
+		$newUser = \App\User::create($user->except(['roles']));
+		$newUser->roles()->attach($user->input('roles'));
+	}
 }
