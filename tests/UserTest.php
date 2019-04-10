@@ -79,4 +79,19 @@ class UserTest extends TestCase
         $this->assertEquals(202, $response->status());
     }
 
+
+    /**
+     *
+     *
+     * @return void
+     */
+    public function testDeleteOneUser()
+    {
+        $user = \App\User::orderby('created_at', 'desc')->first();
+        $this->json('DELETE', '/users/'.$user->id)
+             ->seeJson([
+                'message' => 'OK'
+             ]);
+    }
+
 }
