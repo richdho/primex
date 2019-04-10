@@ -20,7 +20,7 @@ cd primex
    CREATE SCHEMA `primex` DEFAULT CHARACTER SET utf8mb4 ;
    ```
 
-3. Create an file `.env` in the project directory and copy the content from `.env`
+3. Create an file `.env` in the project directory and copy the content from `.env.example`
 
 4. Input the database information and random APP_KEY accordingly in `.env`
 
