@@ -25,4 +25,25 @@ class UserTest extends TestCase
              ]);
     }
 
+    /**
+     *
+     *
+     * @return void
+     */
+    public function testGetOneUser()
+    {
+        $user = \App\User::first();
+        $this->json('GET', '/users/'.$user->id)
+             ->seeJsonStructure([
+                'user' => [
+                        'id',
+                        'name',
+                        'roles',
+                        'created_at',
+                        'updated_at',
+                        'deleted_at'
+                ],
+             ]);
+    }
+
 }
