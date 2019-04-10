@@ -1,4 +1,14 @@
-# PrimeXconnect API test
+# PrimeXConnect API test
+
+## Development Environment:
+
+PHP:  7.1.27
+
+MySQL:  5.7.14
+
+Lumen: 5.8
+
+OS: Windows 10
 
 ## Assumptions
 
